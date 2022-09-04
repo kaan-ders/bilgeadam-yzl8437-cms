@@ -1,0 +1,11 @@
+CMS (Dergi yayınlama)
+-----------------------------------
+
+Web
+	* Son kullanıcı
+	* Admin
+Windows
+	* Son kullanıcı
+
+Console
+	* Takip eden kişilere sayı yayınlandığı zaman mail at
