@@ -9,37 +9,31 @@ namespace CmsServer.Areas.Admin.Controllers
     public class SayiController : Controller
     {
         private IDataHandler _dataHandler;
-        public SayiController(IDataHandler dataHandler)
+        private IHttpContextAccessor _httpContextAccessor;
+        public SayiController(IDataHandler dataHandler, IHttpContextAccessor httpContextAccessor)
         {
             _dataHandler = dataHandler;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Index(Guid id)
         {
             List<Sayi> liste = _dataHandler.Sayi.Listele();
-            ViewBag.DergiId = id;
-            
+            _httpContextAccessor.HttpContext.Session.SetString("DergiId", id.ToString());
+
             return View(liste);
         }
 
-        public IActionResult Add(Guid id)
+        public IActionResult Add(Guid? id)
         {
-            ViewBag.DergiId = id;
-            return View();
+            if (id != null)
+            {
+                Sayi sayi = _dataHandler.Sayi.Getir(id.Value);                
+                return View(sayi);
+            }
+            else
+                return View();
         }
-
-        //public IActionResult Add(string dergiId, string id)
-        //{
-        //    if(id != null)
-        //    {
-        //        //Sayi sayi = _dataHandler.Sayi.Getir(id.Value);
-        //        //return View(sayi);
-
-        //        return View();
-        //    }
-        //    else
-        //        return View();
-        //}
 
         [HttpPost]
         public IActionResult Add(Sayi sayi)
@@ -47,7 +41,8 @@ namespace CmsServer.Areas.Admin.Controllers
             if(sayi.Id == Guid.Empty)
             {
                 sayi.YeniNesneOlarakDoldur();
-                sayi.DergiId = Guid.Parse(HttpContext.Session.GetString("DergiId"));
+                sayi.DergiId = Guid.Parse(_httpContextAccessor.HttpContext.Session.GetString("DergiId"));
+
                 _dataHandler.Dergi.Insert(sayi);
             }
             else

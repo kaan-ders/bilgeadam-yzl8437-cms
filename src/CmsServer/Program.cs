@@ -7,15 +7,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CmsDbContext>(
         options => 
         options.UseSqlServer(
-            @"Server=ANK1-YZLMORT-08\SQLEXPRESS;Database=CmsDergi;User Id=sa;Password=sa;"
-            //@"Server=(local);Database=CmsDergi;Trusted_Connection=True;"
+            //@"Server=ANK1-YZLMORT-08\SQLEXPRESS;Database=CmsDergi;User Id=sa;Password=sa;"
+            @"Server=(local);Database=CmsDergi;Trusted_Connection=True;"
         )
 );
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDistributedMemoryCache();
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => false;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(10);
@@ -40,8 +47,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseSession();
+app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "Admin",

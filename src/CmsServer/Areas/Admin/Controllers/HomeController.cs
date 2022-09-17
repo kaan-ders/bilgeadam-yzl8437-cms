@@ -9,15 +9,17 @@ namespace CmsServer.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         private IDataHandler _dataHandler;
-        public HomeController(IDataHandler dataHandler)
+        private IHttpContextAccessor _httpContextAccessor;
+        public HomeController(IDataHandler dataHandler, IHttpContextAccessor httpContextAccessor)
         {
             _dataHandler = dataHandler;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Index()
         {
             List<Dergi> liste = _dataHandler.Dergi.Listele();
-            //HttpContext.Session.Remove("DergiId");
+            _httpContextAccessor.HttpContext.Session.Remove("DergiId");
 
             return View(liste);
         }
