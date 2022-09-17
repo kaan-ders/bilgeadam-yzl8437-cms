@@ -1,4 +1,5 @@
 using CmsServer.Infrastructure.Data;
+using CmsServer.Infrastructure.Data.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,13 +7,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CmsDbContext>(
         options => 
         options.UseSqlServer(
-            @"Server=KZL-JAVAORT-B08\SQLSERVER15;Database=CmsDergi;User Id=sa;Password=123;"
+            @"Server=ANK1-YZLMORT-08\SQLEXPRESS;Database=CmsDergi;User Id=sa;Password=sa;"
             //@"Server=(local);Database=CmsDergi;Trusted_Connection=True;"
         )
 );
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddScoped<IDataHandler, DataHandler>();
 
 var app = builder.Build();
 
@@ -30,6 +41,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "Admin",

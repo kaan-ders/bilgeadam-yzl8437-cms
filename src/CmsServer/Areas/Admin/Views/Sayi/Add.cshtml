@@ -1,0 +1,23 @@
+﻿@{
+}
+
+@model Sayi
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Sayı Ekle/Düzenle</h1>
+</div>
+
+<form class="mt-3" asp-action="Add">
+  <input type="hidden" class="form-control" asp-for="Id">
+  <input type="hidden" class="form-control" asp-for="CreatedDate">
+  <input type="hidden" class="form-control" asp-for="DergiId">
+  <div class="mb-3">
+    <label class="form-label">No</label>
+    <input type="number" class="form-control" asp-for="No">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Yayınlanma Tarihi</label>
+    <input type="date" class="form-control" asp-for="YayinTarihi">
+  </div>
+  <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

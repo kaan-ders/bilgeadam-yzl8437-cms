@@ -1,0 +1,20 @@
+﻿@{
+}
+
+@model LoginViewModel
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Login Ol</h1>
+</div>
+
+<form class="mt-3" asp-action="Login">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Kullanıcı Adı (Eposta)</label>
+    <input type="email" class="form-control" asp-for="UserName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Şifre</label>
+    <input type="password" class="form-control" asp-for="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Giriş</button>
+</form>

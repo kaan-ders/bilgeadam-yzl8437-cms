@@ -6,5 +6,18 @@
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsDeleted { get; set; }
+
+        public void YeniNesneOlarakDoldur()
+        {
+            Id = Guid.NewGuid();
+            CreatedDate = DateTime.Now;
+            ModifiedDate = DateTime.Now;
+            IsDeleted = false;
+        }
+
+        public void ModifiyeEdilmisNesneOlarakDoldur()
+        {
+            ModifiedDate = DateTime.Now;
+        }
     }
 }
