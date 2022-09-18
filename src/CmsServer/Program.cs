@@ -7,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CmsDbContext>(
         options => 
         options.UseSqlServer(
-            //@"Server=ANK1-YZLMORT-08\SQLEXPRESS;Database=CmsDergi;User Id=sa;Password=sa;"
-            @"Server=(local);Database=CmsDergi;Trusted_Connection=True;"
+            @"Server=ANK1-YZLMORT-08\SQLEXPRESS;Database=CmsDergi;User Id=sa;Password=sa;"
+            //@"Server=(local);Database=CmsDergi;Trusted_Connection=True;"
         )
 );
 

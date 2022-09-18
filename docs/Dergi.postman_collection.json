@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "3a7a2632-f289-4853-8069-3fba54f867a0",
+		"name": "Dergi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DergiListele",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/contentapi/DergiListele",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"contentapi",
+						"DergiListele"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DergiDetay",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/contentapi/DergiDetay/ec2fa9cb-8a0a-461a-bd04-c91070e3e9e4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"contentapi",
+						"DergiDetay",
+						"ec2fa9cb-8a0a-461a-bd04-c91070e3e9e4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SayiListele",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/contentapi/SayiListele/ec2fa9cb-8a0a-461a-bd04-c91070e3e9e4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"contentapi",
+						"SayiListele",
+						"ec2fa9cb-8a0a-461a-bd04-c91070e3e9e4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SayiDetay",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/contentapi/SayiDetay/2f8e0510-7e1a-4570-a987-af2f7a36680e",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"contentapi",
+						"SayiDetay",
+						"2f8e0510-7e1a-4570-a987-af2f7a36680e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MakaleListele",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/contentapi/MakaleListele/2f8e0510-7e1a-4570-a987-af2f7a36680e",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"contentapi",
+						"MakaleListele",
+						"2f8e0510-7e1a-4570-a987-af2f7a36680e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MakaleDetay",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7222/api/contentapi/MakaleDetay/a64e13fe-7e64-4194-a6e9-cdb421d76fe1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7222",
+					"path": [
+						"api",
+						"contentapi",
+						"MakaleDetay",
+						"a64e13fe-7e64-4194-a6e9-cdb421d76fe1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

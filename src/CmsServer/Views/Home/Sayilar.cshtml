@@ -1,0 +1,32 @@
+﻿@{
+}
+
+@model List<Sayi>
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.DergiAdi Dergisi Sayıları</h1>
+</div>
+
+<div class="row mt-3 bg-light">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Yayınlanma Tarihi</th>
+                    <th scope="col">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sayi in Model)
+                {
+                    <tr>
+                        <td> @sayi.No </td>
+                        <td> @sayi.YayinTarihi.ToString("dd.MM.yyyy") </td>
+                        <td> <a href="/Home/Makaleler/@sayi.Id">makaleler</a> </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

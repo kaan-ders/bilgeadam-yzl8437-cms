@@ -1,0 +1,14 @@
+﻿@{
+}
+
+@model Makale
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Baslik</h1>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        @Html.Raw(Model.Icerik)
+    </div>
+</div>

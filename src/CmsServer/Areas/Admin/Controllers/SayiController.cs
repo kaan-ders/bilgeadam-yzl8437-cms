@@ -1,11 +1,12 @@
-﻿using CmsServer.Infrastructure.Data.DataAccess;
+﻿using CmsServer.Infrastructure.Authentication;
+using CmsServer.Infrastructure.Data.DataAccess;
 using CmsServer.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CmsServer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[AuthActionFilter]
+    [AuthActionFilter]
     public class SayiController : Controller
     {
         private IDataHandler _dataHandler;
@@ -18,8 +19,10 @@ namespace CmsServer.Areas.Admin.Controllers
 
         public IActionResult Index(Guid id)
         {
-            List<Sayi> liste = _dataHandler.Sayi.Listele();
-            _httpContextAccessor.HttpContext.Session.SetString("DergiId", id.ToString());
+            List<Sayi> liste = _dataHandler.Sayi.Listele(id);
+
+            if (_httpContextAccessor.HttpContext.Session.Keys.Contains("DergiId") == false)
+                _httpContextAccessor.HttpContext.Session.SetString("DergiId", id.ToString());
 
             return View(liste);
         }
@@ -28,7 +31,7 @@ namespace CmsServer.Areas.Admin.Controllers
         {
             if (id != null)
             {
-                Sayi sayi = _dataHandler.Sayi.Getir(id.Value);                
+                Sayi sayi = _dataHandler.Sayi.Getir(id.Value);
                 return View(sayi);
             }
             else

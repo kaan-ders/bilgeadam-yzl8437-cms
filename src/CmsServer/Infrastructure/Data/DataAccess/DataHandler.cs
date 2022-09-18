@@ -44,6 +44,18 @@
                 return _sayiDataHandler;
             }
         }
+
+        private MakaleDataHandler _makaleDataHandler;
+        public MakaleDataHandler Makale
+        {
+            get
+            {
+                if (_makaleDataHandler == null)
+                    _makaleDataHandler = new MakaleDataHandler(_dbContext);
+
+                return _makaleDataHandler;
+            }
+        }
     }
 
     public interface IDataHandler
@@ -51,5 +63,6 @@
         UserDataHandler User { get; }
         DergiDataHandler Dergi { get; }
         SayiDataHandler Sayi { get; }
+        MakaleDataHandler Makale { get; }
     }
 }

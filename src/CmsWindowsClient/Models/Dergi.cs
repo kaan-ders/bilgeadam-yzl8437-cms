@@ -1,4 +1,4 @@
-﻿namespace CmsServer.Infrastructure.Data.Models
+﻿namespace CmsWindowsClient.Models
 {
     public class Dergi : ModelBase
     {

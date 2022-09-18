@@ -1,11 +1,12 @@
-﻿using CmsServer.Infrastructure.Data.DataAccess;
+﻿using CmsServer.Infrastructure.Authentication;
+using CmsServer.Infrastructure.Data.DataAccess;
 using CmsServer.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CmsServer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[AuthActionFilter]
+    [AuthActionFilter]
     public class HomeController : Controller
     {
         private IDataHandler _dataHandler;
@@ -19,7 +20,9 @@ namespace CmsServer.Areas.Admin.Controllers
         public IActionResult Index()
         {
             List<Dergi> liste = _dataHandler.Dergi.Listele();
+
             _httpContextAccessor.HttpContext.Session.Remove("DergiId");
+            _httpContextAccessor.HttpContext.Session.Remove("SayiId");
 
             return View(liste);
         }

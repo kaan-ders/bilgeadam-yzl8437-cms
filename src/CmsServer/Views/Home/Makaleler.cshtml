@@ -1,0 +1,30 @@
+﻿@{
+}
+
+@model List<Makale>
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.DergiAdi Dergisi @ViewBag.Sayi No'lu Sayı Makaleleri</h1>
+</div>
+
+<div class="row mt-3 bg-light">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:30%;">Başlık</th>
+                    <th scope="col">Özet</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var makale in Model)
+                {
+                    <tr>
+                        <td> <a href="/Home/Makale/@makale.Id" target="_blank"> @makale.Baslik</a> </td>
+                        <td> @makale.Ozet </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
